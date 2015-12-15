@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+	.container
+		.row
+			each item in songs
+				.col-md-2
+					.thumbnail
+						a(href="/song/#{item._id}")
+							img(src="#{item.poster}",alt="#{item.title}")
+					.caption
+						h3 #{item.title}
+						P: a.btn.btn-primary(href="/song/#{item._id}",role="button") 试听歌曲

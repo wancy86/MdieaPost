@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+	.container
+		.row
+			form.form-horizonal(method="post" action="/song/save")
+				input(type="hidden",name="song[_id]",value="#{song._id}")
+				.form-group
+					label.col-sm-2.control-label(for="inputTitle") 歌曲名称
+					.col-sm-10
+						input#inputTitle.form-control(type="text", name="song[title]", value="#{song.title}")
+				.form-group
+					label.col-sm-2.control-label(for="inputsinger") 歌手
+					.col-sm-10
+						input#inputsinger.form-control(type="text", name="song[singer]", value="#{song.singer}")
+				.form-group
+					label.col-sm-2.control-label(for="inputcountry") 国家
+					.col-sm-10
+						input#inputcountry.form-control(type="text", name="song[country]", value="#{song.country}")
+				.form-group
+					label.col-sm-2.control-label(for="inputyear") 发行年份
+					.col-sm-10
+						input#inputyear.form-control(type="text", name="song[year]", value="#{song.year}")
+				.form-group
+					label.col-sm-2.control-label(for="inputposter") 专辑封面
+					.col-sm-10
+						input#inputposter.form-control(type="text", name="song[poster]", value="#{song.poster}")
+				.form-group
+						.col-sm-offset-2.col-sm-10
+						button.btn.btn-default(type="submit") 录入				
+
+
