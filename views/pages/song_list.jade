@@ -10,4 +10,5 @@ block content
 							img(src="#{item.poster}",alt="#{item.title}")
 					.caption
 						h3 #{item.title}
-						P: a.btn.btn-primary(href="/song/#{item._id}",role="button") 试听歌曲
+						P: a.btn.btn-primary(href="/song/#{item._id}",role="button") 试听歌曲 
+							a.btn.btn-primary(href="/song/remove/#{item._id}",role="button") 删除

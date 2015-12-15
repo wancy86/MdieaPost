@@ -43,8 +43,32 @@ app.get('/song/add', function(req, res) {
             title: '',
             country: '',
             year: '',
-            poster:''
+            poster: ''
         }
+    });
+});
+
+app.get('/song/:id', function(req, res) {
+    var id = req.params.id;
+    Song.findByID(id, function(err, song) {
+        if (err) {
+            console.log(err);
+        }
+        res.render('song_edit', {
+            title: "编辑歌曲",
+            song: song
+        });
+    });
+});
+
+app.get('/song/remove/:id', function(req, res) {
+    var id = req.params.id;
+    Song.findByID(id, function(err, song) {
+        if (err) {
+            console.log(err);
+        }
+        song.remove();
+        res.redirect('/');
     });
 });
 
@@ -53,7 +77,7 @@ app.post('/song/save', function(req, res) {
     var songObj = req.body.song
     var _song
 
-    if (id!='undefined') { //edit
+    if (id != 'undefined') { //edit
         Song.findByID(id, function(err, song) {
             if (err) {
                 console.log(err);
@@ -75,7 +99,7 @@ app.post('/song/save', function(req, res) {
             singer: songObj.singer,
             country: songObj.country,
             year: songObj.year,
-            poster:songObj.poster
+            poster: songObj.poster
 
         });
 
